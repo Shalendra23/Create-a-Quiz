@@ -76,8 +76,8 @@ function calcScore(){
            let s = 0;
            let l = 3;
 
-                for (s; s < l; s++)
-           if ( s.valujd)
+                for (s; s < l; s++){}
+       //    if ( s.valujd)
 
     
 
