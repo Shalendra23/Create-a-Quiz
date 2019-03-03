@@ -61,10 +61,10 @@ let chA, chB, chC, chD;
                             chC = questions[pos][3];
                             chD = questions[pos][4];
 
-                            quiz.innerHTML = '<h2>' + question + '</h2>';
-                            quiz.innerHTML += '<input type="radio" name="choices" value="A">' + chA + '<br>';
-                            quiz.innerHTML += '<input type="radio" name="choices" value="B">' + chB + '<br>';
-                            quiz.innerHTML += '<input type="radio" name="choices" value="C">' + chC + '<br>';
+                            quiz.innerHTML = '<h2>' + question + '</h2> <br>';
+                            quiz.innerHTML += '<input type="radio" name="choices" value="A">' + chA + '<br> <br>';
+                            quiz.innerHTML += '<input type="radio" name="choices" value="B">' + chB + '<br> <br>';
+                            quiz.innerHTML += '<input type="radio" name="choices" value="C">' + chC + '<br> <br>';
                             quiz.innerHTML += '<input type="radio" name="choices" value="D">' + chD + '<br> <br>';
                             quiz.innerHTML += '<button onclick="checkAnswer()"> Next Question</button>';
                     } else{
@@ -74,10 +74,10 @@ let chA, chB, chC, chD;
                             chC = questions[pos][3];
                             chD = questions[pos][4];
             
-                            quiz.innerHTML = '<h2>' + question + '</h2>';
-                            quiz.innerHTML += '<input type="radio" name="choices" value="A">' + chA + '<br>';
-                            quiz.innerHTML += '<input type="radio" name="choices" value="B">' + chB + '<br>';
-                            quiz.innerHTML += '<input type="radio" name="choices" value="C">' + chC + '<br>';
+                            quiz.innerHTML = '<h2>' + question + '</h2> <br>';
+                            quiz.innerHTML += '<input type="radio" name="choices" value="A">' + chA + '<br> <br>';
+                            quiz.innerHTML += '<input type="radio" name="choices" value="B">' + chB + '<br> <br>';
+                            quiz.innerHTML += '<input type="radio" name="choices" value="C">' + chC + '<br> <br>';
                             quiz.innerHTML += '<input type="radio" name="choices" value="D">' + chD + '<br> <br>';
                             quiz.innerHTML += '<button onclick="checkAnswer()"> Calulate Score</button>';
                         }
