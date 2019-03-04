@@ -1,9 +1,11 @@
 
 let status = document.createElement("h1");  // h1 element created from js to display status of questions 
 document.body.appendChild(status);
+console.log(status);
 
 let quiz = document.createElement("div");  // div contatiner element created from js to display question and results 
 document.body.appendChild(quiz);
+console.log(quiz);
 
 let pos = 0;
 let correct = 0;
@@ -12,7 +14,7 @@ let choices;
 let choice;
 let chA, chB, chC, chD;
 
-    let questions = [   // Array of objects for quiz questions & answers
+let questions = [   // Array of objects for quiz questions & answers
     [' Into which sea does the Nile flow?', 'Pacific', 'Indian', 'Mediterranean', 'Black Sea', 'C'],
     ['Three continents lie on the Tropic of Capricorn, South America is one, name any of the other two?', 'Europe, Africa', 'Australia, Africa', 'USA, Europe', 'Aisa, Africa', 'B'],
     ['In American currency 10 cents make a what?', 'Dime', 'Quarter', '50 Cent', 'Dollar', 'A'],
@@ -33,26 +35,31 @@ let chA, chB, chC, chD;
     ['One and a half litres of champagne is known as a what?', 'Quart', 'Magnum', 'Big Box', 'Case', 'B'],
     ['In alphabetical order name the three particles that make up an atom?', 'Electron, Neutron, Proton', 'Neutron, Electron, Proton', 'Proton, Atom, Neutron', 'Atom, Electron, Neutron', 'A'],
     ['What is the common name of the "Auora Borealis"?', 'Shooting Star', 'Stone Henge', 'Rainbow', 'Northern Lights', 'D'],
-    ];
+];
 
         function renderQuestion(){   // funnction that renders the questions to the DOM
-        status.innerHTML = 'Question ' + (pos+1) + ' of ' + questions.length;
-
-        if(pos >= questions.length){
-            status.innerHTML = 'Test Completed';
         
-            if( correct < 10) {   // funnction that checks score and displays approiate message
-                quiz.innerHTML = '<h2>Try Harder, you got ' + correct + ' / ' + questions.length + ' - please try the quiz again to improve your score </h2>';
-            } else if ( correct >= 10 && correct <= 15){
-                quiz.innerHTML = '<h2>Well done - Average score , you got ' + correct + ' / ' + questions.length + ' - with a bit more work you can ace this quiz </h2>';
-            } else if ( correct > 15){
-                quiz.innerHTML = '<h2>Congratulations, you got ' + correct + ' / ' + questions.length + ' - Awesome </h2>';
-            } else {
-            quiz.innerHTML = 'Null Error';
-            }
+            status.innerHTML = 'Question ' + (pos+1) + ' of ' + questions.length;
 
-            return false;
-        }
+                    if(pos >= questions.length){
+                        status.innerHTML = 'Test Completed';
+                    
+                        if( correct < 10) {   // funnction that checks score and displays approiate message
+                            quiz.innerHTML = '<h2>Try Harder, you got ' + correct + ' / ' + questions.length + ' - please try the quiz again to improve your score </h2>';
+                            quiz.innerHTML += '<button onclick="location.reload();"> Start Quiz Again</button>';
+                        } else if ( correct >= 10 && correct <= 15){
+                            quiz.innerHTML = '<h2>Well done - Average score , you got ' + correct + ' / ' + questions.length + ' - with a bit more work you can ace this quiz </h2>';
+                            quiz.innerHTML += '<button onclick="location.reload();"> Start Quiz Again</button>';
+                        } else if ( correct > 15){
+                            quiz.innerHTML = '<h2>Congratulations, you got ' + correct + ' / ' + questions.length + ' - Awesome </h2>';
+                            quiz.innerHTML += '<button onclick="location.reload();"> Start Quiz Again</button>';
+                        } else {
+                            quiz.innerHTML = 'Null Error';
+                            quiz.innerHTML += '<button onclick="location.reload();"> Start Quiz Again</button>';
+                        }
+
+                        return false;
+                    }
 
                     if ( pos < 19) {   // changes the Next question button to Caluclate Score on last question
                             question = questions[pos][0];
@@ -60,7 +67,7 @@ let chA, chB, chC, chD;
                             chB = questions[pos][2];
                             chC = questions[pos][3];
                             chD = questions[pos][4];
-
+                                        // generates questions into DIV 
                             quiz.innerHTML = '<h2>' + question + '</h2> <br>';
                             quiz.innerHTML += '<input type="radio" name="choices" value="A">' + chA + '<br> <br>';
                             quiz.innerHTML += '<input type="radio" name="choices" value="B">' + chB + '<br> <br>';
@@ -82,25 +89,26 @@ let chA, chB, chC, chD;
                             quiz.innerHTML += '<button onclick="checkAnswer()"> Calulate Score</button>';
                         }
 
-        }
+        } // end function renderQuestion
 
         function checkAnswer(){  // function that checks answers against array and increments score via for loop
-        choice = null
-        choices = document.getElementsByName('choices');
-        for(let i = 0; i < choices.length; i++){
-            if(choices[i].checked){
-            choice = choices[i].value;
+            choice = null
+            choices = document.getElementsByName('choices');
+            for(let i = 0; i < choices.length; i++){
+                if(choices[i].checked){
+                choice = choices[i].value;
+                }
             }
-        }
 
-        if(choice === questions[pos][5]){
-            correct++;  
-            console.log(correct);
-        }
+            if(choice === questions[pos][5]){
+                correct++;  // correct = correct + 1;   
+                console.log(correct);
+            }
 
         pos++;
-        renderQuestion();
-        }
+        renderQuestion();   // calls function to renderQuestion and continue until pos = 20 ;
+            }
 
-        window.addEventListener('load', renderQuestion, false);
-                        
+    window.addEventListener('load', renderQuestion, false); // calls function to renderQuestion and continue until pos = 20 ;
+    
+                            
